@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>whoAreYou</title>
+</head>
+<body>
+    <h1>Name: <span id="user_name">Dynamically name change...</span></h1>
+
+    <script>
+        fetch('https://randomuser.me/api')
+        .then(res => res.json())
+        .then(data => {
+            const user = data.results[0]
+            const fullName = `${user.name.title} ${user.name.first} ${user.name.last}`;
+            //console.log(user.name);
+            //console.log(fullName);
+            document.getElementById('user_name').innerText = fullName;
+        })
+    </script>
+</body>
+</html>
